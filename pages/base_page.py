@@ -30,7 +30,6 @@ class BasePage:
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         self.click_on_button_clickable(locator)
 
-
     @allure.step('Открываем страницу по url')
     def open_page(self, url):
         self.driver.get(url)
