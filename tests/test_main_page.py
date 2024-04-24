@@ -12,7 +12,7 @@ class TestMainPage:
         switching.open_page(urls.ORDER_URL)
         switching.click_on_main_logo_scooter()
 
-        assert driver.current_url == urls.MAIN_URL
+        assert switching.get_current_url() == urls.MAIN_URL
 
     @allure.title('Проверка current_url страницы Dzen')
     @allure.description('Проверяем, что при переходе на страницу yandex.dzen фактический url == ожидаемому')
@@ -20,6 +20,6 @@ class TestMainPage:
         switching = MainPage(driver)
         switching.open_page(urls.ORDER_URL)
         switching.click_on_yandex_logo_on_main_page()
-        check_url = switching.switch_to_any_tab_and_return_current_url(urls.YANDEX_DZEN_URL)
+        switching.switch_to_any_tab_and_wait_url_to_be_correct(urls.YANDEX_DZEN_URL)
 
-        assert check_url == urls.YANDEX_DZEN_URL
+        assert switching.get_current_url() == urls.YANDEX_DZEN_URL
