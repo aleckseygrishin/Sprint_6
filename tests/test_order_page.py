@@ -1,3 +1,4 @@
+import allure
 import urls
 import pytest
 from pages.order_page_second import OrderPageSecond
@@ -5,6 +6,9 @@ from user_data import UserData
 
 
 class TestOrderPage:
+    @allure.title('Проверка полного пути заказа')
+    @allure.description('Проверка полного пути заказа до окна с номер заказа. '
+                        'Поиск и сравнение элемента с текстом \'Заказ оформлен\'')
     @pytest.mark.parametrize('first_name, second_name, place, metro_name, tel_number, '
                              'date, period, color, comment, xpath',
                              [UserData.FIRST_DATA_SET, UserData.SECOND_DATA_SET])
