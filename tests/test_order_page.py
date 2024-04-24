@@ -28,6 +28,3 @@ class TestOrderPage:
         order.click_on_yes_button()
 
         assert 'Заказ оформлен' in order.get_order_is_done_element().text
-
-
-

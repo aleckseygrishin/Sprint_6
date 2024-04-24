@@ -18,5 +18,3 @@ class BasePage:
 
     def open_page(self, url):
         self.driver.get(url)
-
-

@@ -38,12 +38,3 @@ class OrderPageFirst(MainPage):
     def click_button_next(self):
         button_next = self.wait_and_find_element(self.BUTTON_NEXT)
         button_next.click()
-
-    def filling_out_first_page(self, first_name, second_name, address, telephone, metro_name):
-        self.send_first_name(first_name)
-        self.send_second_name(second_name)
-        self.send_address(address)
-        self.send_telephone(telephone)
-        self.click_and_send_metro_list(metro_name)
-        self.choose_metro_in_list(metro_name)
-        self.click_button_next()
