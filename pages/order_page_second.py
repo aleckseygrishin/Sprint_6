@@ -1,3 +1,4 @@
+import allure
 from selenium.webdriver.common.by import By
 from pages.order_page_first import OrderPageFirst
 
@@ -10,10 +11,12 @@ class OrderPageSecond(OrderPageFirst):
     BUTTON_YES = (By.XPATH, "//button[text()='Да']")
     ORDER_IS_DONE = (By.XPATH, "//div[text()='Заказ оформлен']")
 
+    @allure.step('Заполняем дату')
     def send_date(self, date):
         input_first_name = self.wait_and_find_element(self.DATE_SCOOTER_DELIVERY)
         input_first_name.send_keys(date)
 
+    @allure.step('Кликаем по полю период и выбираем необходимый из списка')
     def click_and_select_rental_period(self, period_day):
         rental_period_click = self.wait_and_find_element(self.RENTAL_PERIOD_CLICKABLE_ELEMENT)
         rental_period_click.click()
@@ -21,21 +24,26 @@ class OrderPageSecond(OrderPageFirst):
         rental_period_choose_date = self.wait_and_find_element((By.XPATH, f"//div[text()='{period_day}']"))
         rental_period_choose_date.click()
 
+    @allure.step('Выбираем цвет самоката')
     def choose_color_scooter(self, color):
         color_scooter = self.wait_and_find_element((By.ID, f"{color}"))
         color_scooter.click()
 
+    @allure.step('Заполняем комментарий для курьера')
     def write_comment_for_courier(self, comment):
         input_comment = self.wait_and_find_element(self.COMMENT_FOR_COURIER)
         input_comment.send_keys(comment)
 
+    @allure.step('Нажимаем кнопку \'Заказать\'')
     def click_on_finish_order_button(self):
         button_order = self.wait_and_find_element(self.BUTTON_FINISH_ORDER)
         button_order.click()
 
+    @allure.step('Подтверждаем заказ')
     def click_on_yes_button(self):
         button_yes = self.wait_and_find_element(self.BUTTON_YES)
         button_yes.click()
 
+    @allure.step('Находим элемент с текстом \'Заказ оформлен\' на тиките успешной регистрации заказа')
     def get_order_is_done_element(self):
         return self.wait_and_find_element(self.ORDER_IS_DONE)
